@@ -1,6 +1,7 @@
 const vscode = require("vscode");
 const xml2js = require("xml2js");
 const fs = require("fs");
+const glob = require("glob");
 const path = require("path");
 const { sort } = require("./sorter.js");
 const {
@@ -44,6 +45,15 @@ const getSortConfiguration = function () {
 
 const formatDirectory = function (dirPath) {
   let xmlFiles = fs.readdirSync(dirPath).filter(isXMLFile);
+  formatFiles(dirPath,xmlFiles);
+}
+
+const formatTree = function (dirPath) {
+  let xmlFiles = glob.sync(dirPath+"/**/*.xml");
+  formatFiles(dirPath,xmlFiles);
+}
+
+const formatFiles = function (dirPath, xmlFiles) {
   let errors = [];
   xmlFiles.forEach((xmlFile) => {
     let filePath = `${dirPath}${path.sep}${xmlFile}`;
@@ -147,9 +157,14 @@ function activate(context) {
     "sf-xml-formatter.formatDirectory",
     (context) => formatDirectory(context["fsPath"])
   );
+  let formatTreeCommand = vscode.commands.registerCommand(
+    "sf-xml-formatter.formatTree",
+    (context) => formatTree(context["fsPath"])
+  );
 
   context.subscriptions.push(openRepoUrl);
   context.subscriptions.push(formatDirCommand);
+  context.subscriptions.push(formatTreeCommand);
 }
 
 // this method is called when your extension is deactivated
