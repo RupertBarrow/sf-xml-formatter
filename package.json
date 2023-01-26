@@ -46,7 +46,11 @@
 			},
 			{
 				"command": "sf-xml-formatter.formatDirectory",
-				"title": "SF XML FORMATTER: Format XML files"
+				"title": "SF XML FORMATTER: Format XML files in directory"
+			},
+			{
+				"command": "sf-xml-formatter.formatTree",
+				"title": "SF XML FORMATTER: Format XML files in whole tree"
 			}
 		],
 		"menus" : {
