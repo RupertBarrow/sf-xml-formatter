@@ -1,117 +1,123 @@
 {
-	"name": "sf-xml-formatter",
-	"displayName": "Salesforce XML Formatter",
-	"description": "Formatter for metadata files on Salesforce orgs",
-	"icon": "images/sf-xml_128x128.png",
-	"publisher": "SwagUp",
-	"author": "Dainel Rivero <dainel@swagup.com> (https://github.com/drival1994)",
-	"contributors": [
-		"Mauricio Perdomo <mauricio@swagup.com> (https://github.com/stdevMauricio1802)"
-	],
-	"version": "0.0.3",
-	"engines": {
-		"vscode": "^1.55.0"
-	},
-	"categories": [
-		"Formatters"
-	],
-	"keywords": [
-		"xml",
-		"salesforce",
-		"git",
-		"metadata",
-		"sort"
-	],
-	"activationEvents": [
-		"onCommand:sf-xml-formatter.openDocs",
-		"onLanguage:xml"
-	],
-	"main": "./extension.js",
-	"contributes": {
-		"languages": [
-			{
-				"id": "xml",
-				"aliases": [
-					"XML"
-				],
-				"extensions": [
-					"xml"
-				]
-			}
-		],
-		"commands": [
-			{
-				"command": "sf-xml-formatter.openDocs",
-				"title": "SF XML FORMATTER: Open docs"
-			},
-			{
-				"command": "sf-xml-formatter.formatDirectory",
-				"title": "SF XML FORMATTER: Format XML files in directory"
-			},
-			{
-				"command": "sf-xml-formatter.formatTree",
-				"title": "SF XML FORMATTER: Format XML files in whole tree"
-			}
-		],
-		"menus" : {
-			"explorer/context" : [
-				{
-					"command": "sf-xml-formatter.formatDirectory",
-					"group": "Salesforce Formatter",
-					"when": "explorerResourceIsFolder"
-				}
-			],
-			"commandPalette": [
-				{
-				  "command": "sf-xml-formatter.formatDirectory",
-				  "when": "false"
-				}
-			]			
-		},
-		"breakpoints": [
-			{
-			  "language": "xml"		  
-			}
-		],
-		"configuration":[
-			{
-				"title": "sf-xml-formatter-vs-config",
-				"properties": {
-					"sf-xml-formatter.format.enabled": {
-						"type": "boolean",
-						"default": true,
-						"markdownDescription": "Enable/disable ability to format document. Default is `true`.",
-						"scope": "window"
-					  }
-				}
-			}
-		]
-	},
-	"scripts": {
-		"lint": "eslint .",
-		"pretest": "npm run lint",
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.55.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.4",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.19.0",
-		"glob": "^7.1.6",
-		"mocha": "^8.2.1",
-		"typescript": "^4.1.3",
-		"vscode-test": "^1.5.0"
-	},
-	"dependencies": {
-		"xml2js": "^0.4.23"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/swagup-com/sf-xml-formatter.git"
-	},
-	"bugs": {
-		"url": "https://github.com/swagup-com/sf-xml-formatter/issues",
-		"email": "dainel@swagup.com"
-	}
+  "name": "sf-xml-formatter",
+  "displayName": "Salesforce XML Formatter",
+  "description": "Formatter for metadata files on Salesforce orgs",
+  "icon": "images/sf-xml_128x128.png",
+  "publisher": "SwagUp",
+  "author": "Dainel Rivero <dainel@swagup.com> (https://github.com/drival1994)",
+  "contributors": [
+    "Mauricio Perdomo <mauricio@swagup.com> (https://github.com/stdevMauricio1802)",
+    "Rupert Barrow <@altiusRup> (https://github.com/rupertbarrow)"
+  ],
+  "version": "0.0.3",
+  "engines": {
+    "vscode": "^1.55.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "keywords": [
+    "xml",
+    "salesforce",
+    "git",
+    "metadata",
+    "sort"
+  ],
+  "activationEvents": [
+    "onCommand:sf-xml-formatter.openDocs",
+    "onLanguage:xml"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "xml",
+        "aliases": [
+          "XML"
+        ],
+        "extensions": [
+          "xml"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "sf-xml-formatter.openDocs",
+        "title": "SF XML FORMATTER: Open docs"
+      },
+      {
+        "command": "sf-xml-formatter.formatDirectory",
+        "title": "SF XML FORMATTER: Format XML files in directory"
+      },
+      {
+        "command": "sf-xml-formatter.formatTree",
+        "title": "SF XML FORMATTER: Format XML files in whole tree"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "sf-xml-formatter.formatDirectory",
+          "group": "Salesforce Formatter",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "sf-xml-formatter.foratTree",
+          "group": "Salesforce Formatter",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "sf-xml-formatter.formatDirectory",
+          "when": "false"
+        }
+      ]
+    },
+    "breakpoints": [
+      {
+        "language": "xml"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "sf-xml-formatter-vs-config",
+        "properties": {
+          "sf-xml-formatter.format.enabled": {
+            "type": "boolean",
+            "default": true,
+            "markdownDescription": "Enable/disable ability to format document. Default is `true`.",
+            "scope": "window"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.55.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.23"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swagup-com/sf-xml-formatter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/swagup-com/sf-xml-formatter/issues",
+    "email": "dainel@swagup.com"
+  }
 }
